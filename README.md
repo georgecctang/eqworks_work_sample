@@ -11,5 +11,5 @@ The instruction for the tasks are lists in this [repository](https://gist.github
 
 ## Project Folder Directory
 This project folder consists of the following sub-folders:  
-[submission](https://github.com/georgecctang/eqworks_work_sample/tree/master/submission) contains the codes, writeups and outputs that provide the solution to every task  
-[data](https://github.com/georgecctang/eqworks_work_sample/tree/master/data) contains raw data used for the tasks along with the interim data derived from the tasks  
+- [submission](https://github.com/georgecctang/eqworks_work_sample/tree/master/submission) contains the codes, writeups and outputs that provide the solution to every task  
+- [data](https://github.com/georgecctang/eqworks_work_sample/tree/master/data) contains provided raw data along with the interim data derived from the tasks  
