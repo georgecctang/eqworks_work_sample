@@ -1,6 +1,6 @@
 # EQ Works Work Sample Repository
 
-This repository contains my work on the work sample provided by EQ works, which covers the following aspects:
+This repository contains my work on the work sample provided by EQ works, which covers the following aspects:  
 Task 1: Data Cleaning  
 Task 2: Data Labeling  
 Task 3: Exploratory Data Analysis and Visualization  
