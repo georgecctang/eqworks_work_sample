@@ -1,5 +1,5 @@
 # Define a basic Haversine distance formula
-# reference:
+# reference: https://gist.githubusercontent.com/s-heisler/e1548f31319dee864d8c5c522be06760/raw/4df8d2d9f43641c25879346a7fc06953fcaf35cb/haversine_function.py
 import numpy as np
 
 def haversine(lat1, lon1, lat2, lon2):
