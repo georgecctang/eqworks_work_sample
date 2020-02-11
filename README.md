@@ -7,7 +7,7 @@ This repository contains my work on the work sample provided by EQ works, which 
 - Task 4a: Effective Visualization Arrpoaches
 - Task 4b: Project Activity Pipeline Dependency  
 
-The instruction for the tasks are lists in this [repository](https://gist.github.com/woozyking/f1d50e1fe1b3bf52e3748bc280cf941f).
+The instruction for the tasks are listed in this [repository](https://gist.github.com/woozyking/f1d50e1fe1b3bf52e3748bc280cf941f).
 
 ## Project Folder Directory
 This project folder consists of the following sub-folders:  
