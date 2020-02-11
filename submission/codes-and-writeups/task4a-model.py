@@ -8,10 +8,10 @@
 #1. Identify a upper bound and lower bound of popularity score that would
 # be considered normal.
 #2. Divide the dataset into three datasets: low_outlier, normal and high_outlier.
-#3. Standardize the popularity score to range (-10,10) as specified in the question.
-#4. Assign a score of 10 to the high_outliers, and 0 to the low_outliers.
-#5. Plot high_outliers and low_outliers with the same color at 10 and -10, respectively.
-#6. if it is important to identify the outliers, we can use other visualization
+#3. Standardize the popularity in the normal dataset score to range (-10,10) as 
+# specified in the question.
+#4. Assign a score of 10 to the high_outliers, and -10 to the low_outliers.
+#5. if it is important to identify the outliers,  use other visualization
 # features, e.g. size and shape etc.
 
 # As an example, let's assume there are 100 POIs. The range of popularity score is
@@ -42,14 +42,15 @@ data_low_outliers = data_df[data_df.popularity < lower].copy()
 data_low_outliers['scaled_score'] = -10
 data_low_outliers['group'] = 'low'
 
+# create the normal value dataframe
 # scale to range (-10,10)
 
 data_df = data_df[data_df.popularity.between(lower,upper)]
 
-
 scaled_max = 10
 scaled_min = -10
 
+#standardize the score
 scaler = MinMaxScaler((scaled_min,scaled_max))
 data_df['scaled_score'] = scaler.fit_transform(data_df[['popularity']])
 data_df['group'] = 'normal'
@@ -59,7 +60,7 @@ data_df = pd.concat([data_df, data_low_outliers,data_hi_outliers])
 print(data_hi_outliers.head())
 
 # With this modified data frame, the difference in visualization can be maximized
-# around the average values.
+# for the normal values.
 
 # The outliers can be identified with the group columns and with different features
 # e.g. marker style, marker size. 
