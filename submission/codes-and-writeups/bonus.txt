@@ -1,1 +1,14 @@
 
+There are many hypothesis tests applicable to POI data. Here are two examples:
+
+Example 1
+
+Hypothesis: Popularity score is the not the same for different POI groups, e.g. (resturants vs cinemas)
+Data: Popularity scores of the two groups of POIs
+Procedure: Conduct hypothesis testing to either reject the null hypothesis (they are the same) or fail to reject the null hypothesis (they are not statistically different).
+
+Example 2
+
+Hypothesis: There is a trend for the popularity score for one POI.
+Data: Popularity scores of one POI over a period of time, e.g. 1 year
+Procedure: Perform linear regression analysis, and to evaluate if the slope is significantly different from zero (i.e. there is a trend) or not (.e. there is no trend). 
