@@ -1,7 +1,3 @@
-#Code for Task 1 - Clean,  Task 2 -  Label, Task 3 - Analyze
-# Created by: George Tang
-
-
 import numpy as np
 import pandas as pd
 
