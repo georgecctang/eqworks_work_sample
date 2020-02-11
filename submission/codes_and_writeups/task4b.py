@@ -20,12 +20,19 @@ task_ids = [int(i) for i in Lines[0].split(',')]
 
 # read the test starting task and goal task
 
-start_goal_tasks = []
 file = open(raw_data_path + 'question.txt', 'r')
 Lines = file.readlines()
 
-for line in Lines:
-    start_goal_tasks.append(int(line.split(':')[1]))
+start_goal_tasks = []
+
+for i, line in enumerate(Lines):
+    #there can be multiple starting tasks as input
+    # the starting task is a list
+    if i == 0:
+        start_goal_tasks.append([int(i) for i in line.split(':')[1].split(',')])
+    #the goal task is an integer
+    if i == 1:
+        start_goal_tasks.append(int(line.split(':')[1]))
 
 #Create a ipa (immediate preceeding assignment) dict for each task
 ipa_dict = defaultdict(list)
@@ -41,15 +48,15 @@ for task in task_ids:
 # Create function
 
 def tasks_pipeline(start,goal,ipa_dict):
-    if start not in ipa_dict.keys():
-        print(f'Starting task {start} is not in ipa dictionary')
-        return []
+
     if goal not in ipa_dict.keys():
-        print(f'Goal task {goal} is not in ipa dictionary')
+        print(f'Goal task {goal} is not in the IPA dictionary.')
         return []
+
     # the list activity is used for the final output
     activity = [goal]
-    #update the ipa list
+
+    #get the ipa for the goal activity
     ipa = ipa_dict[goal]
 
     while len(ipa) > 0:
@@ -57,15 +64,18 @@ def tasks_pipeline(start,goal,ipa_dict):
         activity.extend(ipa)
         # update ipa list for based on activites on current ipa list
         # do not include the ipas for the start activity
-        ipa = [ipa_dict[i] for i in ipa if i != start]
+        ipa = [ipa_dict[i] for i in ipa if i not in start]
         # flatten the list
         ipa = [task for task_ipa in ipa for task in task_ipa]
 
-    if start not in activity:
-        print(f'Starting task {start} is not required for goal task {end}')
+    for task in start:
+        if task not in activity:
+            print(f'Starting task {task} is not required.')
+
     return sorted(set(activity), key=activity.index,reverse=True)
 
 #Test function
 
+#pipeline = tasks_pipeline(start_goal_tasks[0],start_goal_tasks[1],ipa_dict)
 pipeline = tasks_pipeline(start_goal_tasks[0],start_goal_tasks[1],ipa_dict)
 print(pipeline)
