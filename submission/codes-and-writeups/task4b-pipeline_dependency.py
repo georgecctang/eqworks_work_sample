@@ -34,7 +34,7 @@ for i, line in enumerate(Lines):
     if i == 1:
         start_goal_tasks.append(int(line.split(':')[1]))
 
-#Create a ipa (immediate preceeding assignment) dict for each task
+#Create a ipa (immediate preceeding activities) dict for each task
 ipa_dict = defaultdict(list)
 
 for ipa, task in relations:
@@ -58,7 +58,8 @@ def tasks_pipeline(start,goal,ipa_dict):
 
     #get the ipa for the goal activity
     ipa = ipa_dict[goal]
-
+    
+    #the loop will continue until there are no more ipa
     while len(ipa) > 0:
         # add all the ipas into the activity queue
         activity.extend(ipa)
@@ -72,10 +73,9 @@ def tasks_pipeline(start,goal,ipa_dict):
         if task not in activity:
             print(f'Starting task {task} is not required.')
 
+    #use the set function to remove duplicate tasks
     return sorted(set(activity), key=activity.index,reverse=True)
 
 #Test function
-
-#pipeline = tasks_pipeline(start_goal_tasks[0],start_goal_tasks[1],ipa_dict)
 pipeline = tasks_pipeline(start_goal_tasks[0],start_goal_tasks[1],ipa_dict)
 print(pipeline)
