@@ -39,6 +39,22 @@ data_df['ClosestPOI'] = data_df[['Latitude','Longitude']].apply(lambda x:
 (np.array([haversine(x['Latitude'], x['Longitude'], lat, lon)
 for lat, lon in POI_lat_lon]).argmin()), axis=1).map(POI_index_dict)
 
+##################################################################################
+#Note that I have also considered using vectorization calculation, which
+#consists of the following steps:
+#1. Calculate the distance for each POI and store them in columns (POI-dist columns)
+#2. Create 'ClosestDistrance' column with the min value of the POI-dist columns
+#3. Create 'ClosestPOI' column with the column name of the POI-dist column with 
+#the min value
+#4. Drop the POI0dist columns
+#
+# This approach is a lot faster than using the APPLY method; however, 
+# if there are many POI, this approach will create many temp columns which
+# the memory may not support.
+# So I chose the APPLY method because the memory requirement should be lower.
+###################################################################################
+
+
 #save cleaned POIlist
 poi_df.to_csv(interim_data_path + 'POIlistCleaned.csv',index=False)
 
